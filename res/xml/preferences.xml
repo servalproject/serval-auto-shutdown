@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * Copyright (C) 2012 The Serval Project
+ *
+ * This file is part of the Serval Auto Shutdown Software
+ *
+ * Serval Auto Shutdown Software is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This source code is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this source code; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ */
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!-- alert settings -->
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="preferences_alert_play_tone"
+        android:summary="@string/preferences_alert_play_tone_summary"
+        android:title="@string/preferences_alert_play_tone_title" />
+
+    <ListPreference
+        android:defaultValue="nasa_countdown.ogg"
+        android:dependency="preferences_alert_play_tone"
+        android:entries="@array/preferences_alert_tone_intervals"
+        android:entryValues="@array/preferences_alert_tone_intervals_values"
+        android:key="preferences_alert_tone"
+        android:summary="@string/preferences_alert_tone_summary"
+        android:title="@string/preferences_alert_tone_title" />
+
+    <!-- shutdown settings -->
+    <ListPreference
+        android:defaultValue="30000"
+        android:entries="@array/preferences_shutdown_delay_intervals"
+        android:entryValues="@array/preferences_shutdown_delay_intervals_values"
+        android:key="preferences_shutdown_delay"
+        android:summary="@string/preferences_shutdown_delay_summary"
+        android:title="@string/preferences_shutdown_delay_title"
+        />
+
+</PreferenceScreen>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+/*
+ * Copyright (C) 2012 The Serval Project
+ *
+ * This file is part of the Serval Auto Shutdown Software
+ *
+ * Serval Auto Shutdown Software is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This source code is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this source code; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ */
+-->
+<resources>
+    <!-- preference arrays -->
+    <!-- shutdown alert sounds -->
+    <string-array
+        name="preferences_alert_tone_intervals">
+        <item>NASA Apollo 11 Countdown</item>
+        <item>EKG Flatline</item>
+        <item>Steam Train Whistle</item>
+    </string-array>
+    <string-array
+        name="preferences_alert_tone_intervals_values">
+        <item>nasa_countdown.ogg</item>
+        <item>ekg_flatline.ogg</item> 
+        <item>steam_train.ogg</item> 
+    </string-array>
+    <!-- shutdown delay -->
+    <string-array
+        name="preferences_shutdown_delay_intervals">
+        <item>30 Seconds</item>
+        <item>1 Minute</item>
+        <item>5 Minutes</item>
+    </string-array>
+    <!-- values in milliseconds -->
+    <string-array
+        name="preferences_shutdown_delay_intervals_values">
+        <item>30000</item>
+        <item>60000</item>
+        <item>300000</item>
+    </string-array>
+</resources>
