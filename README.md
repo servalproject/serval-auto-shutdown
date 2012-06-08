@@ -2,7 +2,7 @@
 
 The Serval Auto Shutdown application will automatically shutdown a phone after a specified time period and optionally playing an alert sound. The team at the Serval Project has found this to be useful as members of the team regularly travel with a number of phones in a bag. When knocked a phone can automatically turn on unnecessarily draining the battery. 
 
-*Please Note* that this application required root access in order to shutdown the phone
+**Please Note** that this application requires root access in order to shutdown the phone
 
 The original Auto Shutdown application was based on an idea that our lead researcher and project co-founder [Dr Paul Gardner-Stephen](http://http://servalpaul.blogspot.com.au/) had was implemented by [Romain Bochet](https://github.com/rbochet). 
 
