@@ -68,7 +68,7 @@ public class ShutdownTask implements Runnable {
 	public ShutdownTask(int shutdownDelay, int mediaFile, Context context) {
 		
 		// validate the parameters
-		if(shutdownDelay <= sThirtySeconds == false) {
+		if(shutdownDelay <= sThirtySeconds) {
 			throw new IllegalArgumentException("the specified shutdown delay is invalid");
 		}
 		
