@@ -40,7 +40,7 @@ public class SystemEventReceiver extends BroadcastReceiver {
 	 * private class level constants
 	 */
 	private final String sTag = "SystemEventReceiver";
-	private final boolean V_LOG = true;
+	private final boolean V_LOG = false;
 	
 	/*
 	 * private class level variables

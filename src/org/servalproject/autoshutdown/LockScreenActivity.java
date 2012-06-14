@@ -40,7 +40,7 @@ public class LockScreenActivity extends Activity implements OnClickListener {
 	 * class level constants
 	 */
 	private final String sTag = "LockScreenActivity";
-	private final boolean V_TAG = true;
+	private final boolean V_TAG = false;
 	
 	private WakeLock wakeLock;
 	

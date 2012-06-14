@@ -42,7 +42,7 @@ public class ShutdownTask implements Runnable {
 	private final int sThirtySeconds = 30000; 
 	
 	private final String sTag = "ShutdownTask";
-	private final boolean V_LOG = true; 
+	private final boolean V_LOG = false; 
 	
 	private final String rebootCommand = "reboot -p";
 	
@@ -68,8 +68,9 @@ public class ShutdownTask implements Runnable {
 	public ShutdownTask(int shutdownDelay, int mediaFile, Context context) {
 		
 		// validate the parameters
-		if(shutdownDelay <= sThirtySeconds) {
-			throw new IllegalArgumentException("the specified shutdown delay is invalid");
+		if(shutdownDelay < sThirtySeconds) {
+			Log.e(sTag, "the specified shutdown delay is invalid, it must be greater than '" + sThirtySeconds + "' milliseconds");
+			throw new IllegalArgumentException("the specified shutdown delay is invalid it must be greater than '" + sThirtySeconds + "' milliseconds");
 		}
 		
 		if(context == null) {
