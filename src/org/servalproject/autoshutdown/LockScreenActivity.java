@@ -23,6 +23,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.util.Log;
@@ -40,9 +41,13 @@ public class LockScreenActivity extends Activity implements OnClickListener {
 	 * class level constants
 	 */
 	private final String sTag = "LockScreenActivity";
-	private final boolean V_TAG = false;
+	private final boolean V_LOG = true;
 	
 	private WakeLock wakeLock;
+	
+	private final int sDelay = 250;
+	private Handler statusCheckHandler = new Handler();
+	private LockScreenActivity self;
 	
 	/*
 	 * (non-Javadoc)
@@ -52,7 +57,16 @@ public class LockScreenActivity extends Activity implements OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        if(V_TAG) {
+        // check to see if we need to actually instantiate the activity
+        if(SystemEventReceiver.ABORT_SHUTDOWN == true) {
+        	// shutdown has been aborted, make this screen go away
+        	finish();
+        }
+        
+        // keep a reference to this object
+        self = this;
+        
+        if(V_LOG) {
         	Log.v(sTag, "activity has been created");
         }
         
@@ -75,7 +89,25 @@ public class LockScreenActivity extends Activity implements OnClickListener {
         				| PowerManager.ACQUIRE_CAUSES_WAKEUP), 
         		getString(R.string.system_application_name));
         wakeLock.acquire();
+        
+        statusCheckHandler.postDelayed(checkStatus, sDelay);
        
+    }
+    
+    /*
+     * (non-Javadoc)
+     * @see android.app.Activity#onStart()
+     */
+    @Override
+    public void onStart() {
+    	
+    	super.onStart();
+    	
+    	// check to see if we need to actually instantiate the activity
+        if(SystemEventReceiver.ABORT_SHUTDOWN == true) {
+        	// shutdown has been aborted, make this screen go away
+        	finish();
+        }
     }
 
     /*
@@ -109,4 +141,19 @@ public class LockScreenActivity extends Activity implements OnClickListener {
         wakeLock.release();
         super.onDestroy();
 	}
+	
+	// runnable used to periodically check to see if the shutdown has been aborted
+	private Runnable checkStatus = new Runnable() {
+		
+		public void run() {
+			
+			if(SystemEventReceiver.ABORT_SHUTDOWN == true) {
+	        	// shutdown has been aborted, make this screen go away
+	        	self.finish();
+	        }
+			
+			statusCheckHandler.postDelayed(checkStatus, sDelay);
+			
+		}
+	};
 }

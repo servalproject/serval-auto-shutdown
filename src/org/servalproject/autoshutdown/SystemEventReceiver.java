@@ -34,13 +34,18 @@ public class SystemEventReceiver extends BroadcastReceiver {
 	/**
 	 * default shutdown delay in milliseconds
 	 */
-	public int DEFAULT_DELAY = 30000;
+	public final static int DEFAULT_DELAY = 30000;
+	
+	/**
+	 * indicates if the shutdown has been aborted
+	 */
+	public static boolean ABORT_SHUTDOWN = false;
 	
 	/*
 	 * private class level constants
 	 */
 	private final String sTag = "SystemEventReceiver";
-	private final boolean V_LOG = false;
+	private final boolean V_LOG = true;
 	
 	/*
 	 * private class level variables
@@ -143,6 +148,9 @@ public class SystemEventReceiver extends BroadcastReceiver {
 	
 	// private function to abort a shutdown
 	private void abortShutdown() {
+		
+		// set flag to indicate shutdown should be aborted
+		ABORT_SHUTDOWN = true;
 		
 		// stop the shutdown task if it is running
 		if(shutdownTask != null) {
